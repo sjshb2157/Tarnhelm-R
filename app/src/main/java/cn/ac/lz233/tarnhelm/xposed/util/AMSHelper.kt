@@ -19,7 +19,7 @@ object AMSHelper {
         return "com.android.server.am.HostingRecord"
             .findClass(context.classLoader)
             .getConstructor(String::class.java, ComponentName::class.java)
-            .newInstance("service", ComponentName(Config.packageName, "cn.ac.lz233.tarnhelm.service.ModuleDataBridgeService"))
+            .newInstance("service", ComponentName(Config.packageName, Config.bridgeServiceName))
     }
 
     // 8.1
@@ -31,7 +31,7 @@ object AMSHelper {
             true,
             0,
             "service",
-            ComponentName(Config.packageName, "cn.ac.lz233.tarnhelm.service.ModuleDataBridgeService"),
+            ComponentName(Config.packageName, Config.bridgeServiceName),
             false,
             false,
             false,
