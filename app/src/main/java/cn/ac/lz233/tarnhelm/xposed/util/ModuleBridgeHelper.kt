@@ -17,6 +17,7 @@ object ModuleBridgeHelper {
 
     private var bridge: ModuleDataBridge? = null
     var isBridgeAvailable = false
+    private var isBound = false
     var mContext: Context? = null
 
     private val serviceConnection = object : ServiceConnection {
@@ -64,9 +65,10 @@ object ModuleBridgeHelper {
 
     @SuppressLint("MissingPermission")
     fun bindBridgeService(context: Context? = mContext) {
+        unbindBridgeService(context)
         LogUtil.xp("bind bridge service")
         runCatching {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            isBound = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                 context?.bindServiceAsUser(
                     bridgeIntent(),
                     serviceConnection,
@@ -79,15 +81,17 @@ object ModuleBridgeHelper {
                     serviceConnection,
                     Context.BIND_AUTO_CREATE
                 )
-            }
+            } == true
         }.onFailure { LogUtil.xpe(it) }
     }
 
     fun unbindBridgeService(context: Context? = mContext) {
+        if (!isBound) return
         LogUtil.xp("unbind bridge service")
         runCatching {
             context?.unbindService(serviceConnection)
         }
+        isBound = false
     }
 
     fun doTarnhelms(string: String): String {
