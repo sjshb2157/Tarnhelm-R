@@ -7,6 +7,8 @@ refine = "4.4.0"
 
 # SDK levels
 compileSdk = "37"
+# API 37 is published as minor API level 2 (platforms;android-37.2).
+compileSdkMinor = "2"
 minSdk = "27"
 targetSdk = "36"
 
