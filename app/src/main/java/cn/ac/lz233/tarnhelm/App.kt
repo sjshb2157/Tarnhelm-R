@@ -8,7 +8,6 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.os.Build
 import android.webkit.WebSettings
 import android.webkit.WebView
 import androidx.preference.PreferenceManager
@@ -104,12 +103,14 @@ class App : Application() {
         notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
 
 
-        if (isXposedActive() && Build.VERSION.SDK_INT <= Build.VERSION_CODES.BAKLAVA) context.startService(
-            Intent().apply {
-                `package` = Config.packageName
-                action = Config.bridgeAction
-            }
-        )
+        if (isXposedActive()) runCatching {
+            context.startService(
+                Intent().apply {
+                    `package` = Config.packageName
+                    action = Config.bridgeAction
+                }
+            )
+        }
 
         createSplitConfig()
 
