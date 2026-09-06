@@ -24,10 +24,10 @@ android {
             version = release(27)
         }
         targetSdk {
-            version = release(36)
+            version = release(37)
         }
         versionCode = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")).toInt()
-        versionName = "1.8.2"
+        versionName = "1.8.3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

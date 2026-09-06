@@ -23,6 +23,9 @@
 # AGP 9 enables android.r8.strictFullModeForKeepRules, so "-keep class A" no
 # longer implicitly keeps the default constructor. XposedEntry is instantiated
 # and invoked reflectively by LSPosed, so keep its members explicitly.
+
+-dontobfuscate
+
 -keep public class cn.ac.lz233.tarnhelm.xposed.XposedEntry {
     *;
 }
