@@ -5,13 +5,6 @@ kotlin = "2.4.10"
 ksp = "2.3.11"
 refine = "4.4.0"
 
-# SDK levels
-compileSdk = "37"
-# API 37 is published as minor API level 2 (platforms;android-37.2).
-compileSdkMinor = "2"
-minSdk = "27"
-targetSdk = "36"
-
 # AndroidX
 appcompat = "1.8.0"
 constraintlayout = "2.2.2"

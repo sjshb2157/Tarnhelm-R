@@ -9,14 +9,15 @@ plugins {
 android {
     namespace = "cn.ac.lz233.tarnhelm.hidden_api"
     compileSdk {
-        version = release(libs.versions.compileSdk.get().toInt()) {
-            minorApiLevel = libs.versions.compileSdkMinor.get().toInt()
+        // API 37 is published as minor API level 2 (platforms;android-37.2).
+        version = release(37) {
+            minorApiLevel = 2
         }
     }
 
     defaultConfig {
         minSdk {
-            version = release(libs.versions.minSdk.get().toInt())
+            version = release(27)
         }
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -30,14 +31,14 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
 }
 
 kotlin {
     compilerOptions {
-        jvmTarget = JvmTarget.JVM_17
+        jvmTarget = JvmTarget.JVM_21
     }
 }
 
