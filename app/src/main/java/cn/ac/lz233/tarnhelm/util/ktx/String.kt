@@ -152,10 +152,10 @@ fun CharSequence.doTarnhelms(): Triple<CharSequence, Boolean, List<List<String>>
 }
 
 fun CharSequence.doTarnhelms(join: Boolean = false, callback: (success: Boolean, result: String) -> Unit = { _, _ -> }): Pair<Boolean, String> {
-    var methodResult = this;
+    var methodResult = this
     var hasTimeConsumingOperation = false
     var targetRules = emptyList<List<String>>()
-    var success = false;
+    var success = false
     val thread = thread {
         runCatching {
             val result = this.doTarnhelms()

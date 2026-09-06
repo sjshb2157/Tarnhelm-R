@@ -85,7 +85,7 @@ class App : Application() {
         context = applicationContext
         sp = context.getSharedPreferences(BuildConfig.APPLICATION_ID, MODE_PRIVATE)
         spSettings = PreferenceManager.getDefaultSharedPreferences(context)
-        webSettings = WebView(this).getSettings()
+        webSettings = WebView(this).settings
         runCatching {
             spXposed = context.getSharedPreferences("${BuildConfig.APPLICATION_ID}_xposed", MODE_WORLD_READABLE)
             editorXposed = spXposed?.edit()
@@ -99,9 +99,9 @@ class App : Application() {
         extensionDao = db.extensionDao()
         ExtensionManager.init()
 
-        activityManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
-        clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        activityManager = getSystemService(ACTIVITY_SERVICE) as ActivityManager
+        clipboardManager = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+        notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
 
 
         if (isXposedActive() && Build.VERSION.SDK_INT <= Build.VERSION_CODES.BAKLAVA) context.startService(

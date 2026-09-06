@@ -31,7 +31,7 @@ import org.json.JSONArray
 
 class ParameterRulesAdapter(private val rulesList: MutableList<ParameterRule>) : RecyclerView.Adapter<ParameterRulesAdapter.ViewHolder>(), IDragSwipe {
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val ruleContentCardView: MaterialCardView = view.findViewById(R.id.ruleContentCardView)
         val ruleEnableSwitch: MaterialSwitch = view.findViewById(R.id.ruleEnableSwitch)
         val descriptionContentTextView: AppCompatTextView = view.findViewById(R.id.descriptionContentTextView)

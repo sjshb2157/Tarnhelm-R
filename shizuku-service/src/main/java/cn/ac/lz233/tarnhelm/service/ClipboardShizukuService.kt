@@ -29,7 +29,7 @@ class ClipboardShizukuService(private val context: Context) : IClipboardShizukuS
 
     @RequiresApi(Build.VERSION_CODES.Q)
     override fun start() {
-        HiddenApiBypass.addHiddenApiExemptions("Landroid/app");
+        HiddenApiBypass.addHiddenApiExemptions("Landroid/app")
         // LogUtil._d("ClipboardShizukuService init")
         appOpsManager = context.getSystemService(Context.APP_OPS_SERVICE) as AppOpsManager
         packageManager = context.packageManager

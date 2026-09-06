@@ -62,7 +62,7 @@ class BackupBottomSheetFragment : BottomSheetDialogFragment(), CoroutineScope by
     private val shareChooserReceiver: BroadcastReceiver by lazy {
         object : BroadcastReceiver() {
             override fun onReceive(context: Context, intent: Intent) {
-                val clickedComponent = intent.getParcelableExtra<ComponentName>(Intent.EXTRA_CHOSEN_COMPONENT);
+                val clickedComponent = intent.getParcelableExtra<ComponentName>(Intent.EXTRA_CHOSEN_COMPONENT)
                 LogUtil._d(clickedComponent)
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE && clickedComponent == null) {
                     return

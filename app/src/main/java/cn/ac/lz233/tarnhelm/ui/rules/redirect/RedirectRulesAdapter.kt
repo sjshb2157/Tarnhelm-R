@@ -25,7 +25,7 @@ import com.google.android.material.materialswitch.MaterialSwitch
 
 class RedirectRulesAdapter(private val rulesList: MutableList<RedirectRule>) : RecyclerView.Adapter<RedirectRulesAdapter.ViewHolder>(), IDragSwipe {
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val ruleContentCardView: MaterialCardView = view.findViewById(R.id.ruleContentCardView)
         val ruleEnableSwitch: MaterialSwitch = view.findViewById(R.id.ruleEnableSwitch)
         val descriptionContentTextView: AppCompatTextView = view.findViewById(R.id.descriptionContentTextView)

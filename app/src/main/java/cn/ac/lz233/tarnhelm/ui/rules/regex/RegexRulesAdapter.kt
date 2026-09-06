@@ -28,7 +28,7 @@ import org.json.JSONArray
 
 class RegexRulesAdapter(private val rulesList: MutableList<RegexRule>) : RecyclerView.Adapter<RegexRulesAdapter.ViewHolder>(), IDragSwipe {
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val ruleContentCardView: MaterialCardView = view.findViewById(R.id.ruleContentCardView)
         val ruleEnableSwitch: MaterialSwitch = view.findViewById(R.id.ruleEnableSwitch)
         val descriptionContentTextView: AppCompatTextView = view.findViewById(R.id.descriptionContentTextView)

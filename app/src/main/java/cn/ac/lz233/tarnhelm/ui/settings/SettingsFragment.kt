@@ -181,12 +181,12 @@ class SettingsFragment() : PreferenceFragmentCompat() {
             updatePadding(top = resources.getDimensionPixelSize(R.dimen.collapsingToolbarLayoutContentPaddingTop))
             clipToPadding = false
         }
-        Shizuku.addRequestPermissionResultListener(shizukuPermissionCallback);
+        Shizuku.addRequestPermissionResultListener(shizukuPermissionCallback)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        Shizuku.removeRequestPermissionResultListener(shizukuPermissionCallback);
+        Shizuku.removeRequestPermissionResultListener(shizukuPermissionCallback)
     }
 
     private fun activateClipboardService() {
