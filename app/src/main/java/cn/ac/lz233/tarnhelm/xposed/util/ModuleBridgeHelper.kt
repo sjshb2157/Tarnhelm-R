@@ -45,26 +45,26 @@ object ModuleBridgeHelper {
         }
     }
 
+    private fun bridgeIntent() = Intent().apply {
+        component = ComponentName(Config.packageName, Config.bridgeServiceName)
+        action = Config.bridgeAction
+        addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES)
+    }
+
     @SuppressLint("MissingPermission")
     fun bindBridgeService(context: Context? = mContext) {
         LogUtil.xp("bind bridge service")
         runCatching {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                 context?.bindServiceAsUser(
-                    Intent().apply {
-                        `package` = Config.packageName
-                        action = Config.bridgeAction
-                    },
+                    bridgeIntent(),
                     serviceConnection,
                     Context.BIND_AUTO_CREATE,
                     android.os.Process.myUserHandle()
                 )
             } else {
                 context?.bindService(
-                    Intent().apply {
-                        `package` = Config.packageName
-                        action = Config.bridgeAction
-                    },
+                    bridgeIntent(),
                     serviceConnection,
                     Context.BIND_AUTO_CREATE
                 )
