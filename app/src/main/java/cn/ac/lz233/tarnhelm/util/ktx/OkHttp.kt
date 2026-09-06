@@ -4,7 +4,6 @@ import cn.ac.lz233.tarnhelm.logic.Network
 import okhttp3.HttpUrl
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 import okhttp3.Request
-import okhttp3.internal.commonToString
 import org.json.JSONObject
 import java.io.IOException
 
@@ -32,6 +31,6 @@ fun HttpUrl.followRedirect(userAgent: String?): HttpUrl {
         (response.header("Location")?.toHttpUrlOrNull() ?: response.header("location")?.toHttpUrlOrNull())
             ?.followRedirect(userAgent) ?: this
     } else {
-        throw IOException(response.commonToString())
+        throw IOException(response.toString())
     }
 }

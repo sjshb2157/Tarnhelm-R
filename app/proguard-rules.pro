@@ -20,7 +20,12 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
--keep public class cn.ac.lz233.tarnhelm.xposed.XposedEntry
+# AGP 9 enables android.r8.strictFullModeForKeepRules, so "-keep class A" no
+# longer implicitly keeps the default constructor. XposedEntry is instantiated
+# and invoked reflectively by LSPosed, so keep its members explicitly.
+-keep public class cn.ac.lz233.tarnhelm.xposed.XposedEntry {
+    *;
+}
 
 -keep class cn.ac.lz233.tarnhelm.App$Companion {
     isXposedActive();
