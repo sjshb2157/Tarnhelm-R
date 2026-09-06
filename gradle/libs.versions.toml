@@ -6,7 +6,7 @@ ksp = "2.3.11"
 refine = "4.4.0"
 
 # SDK levels
-compileSdk = "36"
+compileSdk = "37"
 minSdk = "27"
 targetSdk = "36"
 
