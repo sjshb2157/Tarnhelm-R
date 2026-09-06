@@ -5,8 +5,8 @@ import android.content.Context
 class ExtensionClassLoader: ClassLoader(sBootClassLoader) {
 
     companion object {
-        private val sBootClassLoader = Context::class.java.classLoader
-        private val sHostClassLoader = ExtensionClassLoader::class.java.classLoader
+        private val sBootClassLoader: ClassLoader = Context::class.java.classLoader!!
+        private val sHostClassLoader: ClassLoader = ExtensionClassLoader::class.java.classLoader!!
         private val whitelist = arrayOf(
             "cn.ac.lz233.tarnhelm.extension.api.",
             "cn.ac.lz233.tarnhelm.extension.storage.ExtensionOwnStorage"

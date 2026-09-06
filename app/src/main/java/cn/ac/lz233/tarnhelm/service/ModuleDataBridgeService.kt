@@ -11,7 +11,7 @@ class ModuleDataBridgeService : Service() {
     private val binder = object : ModuleDataBridge.Stub() {
 
         override fun doTarnhelms(string: String): String {
-            return string.doTarnhelms(true)!!.second
+            return string.doTarnhelms(true).second
         }
 
         override fun ping(): Int = 1

@@ -41,7 +41,7 @@ object SystemUI {
                     //val clipboardManager = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
                     val actionContainer = clipboardOverlayController.getObjectField("mActionContainer") as LinearLayout
                     // Android may call setClipData twice
-                    if ((actionContainer[actionContainer.size - 1] as View).contentDescription != "Tarnhelm") {
+                    if (actionContainer[actionContainer.size - 1].contentDescription != "Tarnhelm") {
                         val chip = it.thisObject.callMethod(
                             "constructActionChip",
                             RemoteAction(

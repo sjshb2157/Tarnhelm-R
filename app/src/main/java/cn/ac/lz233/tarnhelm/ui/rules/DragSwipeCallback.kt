@@ -16,14 +16,14 @@ class DragSwipeCallback(private val adapter: IDragSwipe) : ItemTouchHelper.Callb
     override fun isItemViewSwipeEnabled() = false
 
     override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
-        adapter.onItemSwapped(viewHolder.adapterPosition, target.adapterPosition)
+        adapter.onItemSwapped(viewHolder.bindingAdapterPosition, target.bindingAdapterPosition)
         return true
     }
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
         when (direction) {
-            ItemTouchHelper.END -> adapter.onItemCopy(viewHolder.adapterPosition)
-            ItemTouchHelper.START -> adapter.onItemDeleted(viewHolder.adapterPosition)
+            ItemTouchHelper.END -> adapter.onItemCopy(viewHolder.bindingAdapterPosition)
+            ItemTouchHelper.START -> adapter.onItemDeleted(viewHolder.bindingAdapterPosition)
         }
     }
 

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.IntentCompat
 import cn.ac.lz233.tarnhelm.ui.BaseActivity
 import kotlinx.coroutines.launch
 import java.io.BufferedInputStream
@@ -12,7 +13,7 @@ import java.io.BufferedOutputStream
 class SaveViaSAFActivity : BaseActivity() {
     private val selectFileCallback = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == RESULT_OK) {
-            val originalFileUri = intent.getParcelableExtra<Uri>(Intent.EXTRA_STREAM)
+            val originalFileUri = IntentCompat.getParcelableExtra(intent, Intent.EXTRA_STREAM, Uri::class.java)
             val outputFileUri = result.data?.data
             if (originalFileUri == null || outputFileUri == null) finish()
             launch {

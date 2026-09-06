@@ -1,5 +1,6 @@
 package cn.ac.lz233.tarnhelm.ui.process
 
+import android.app.Activity
 import android.content.ClipData
 import android.content.ComponentName
 import android.content.Intent
@@ -13,7 +14,12 @@ import kotlinx.coroutines.launch
 
 class ProcessShareActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        overridePendingTransition(0, 0)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            overrideActivityTransition(Activity.OVERRIDE_TRANSITION_OPEN, 0, 0)
+        } else {
+            @Suppress("DEPRECATION")
+            overridePendingTransition(0, 0)
+        }
         super.onCreate(savedInstanceState)
 
         // must have a delay because Android uses a very fool method to detect if app is in focus

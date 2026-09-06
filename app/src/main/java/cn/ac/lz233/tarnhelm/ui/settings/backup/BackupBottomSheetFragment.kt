@@ -17,6 +17,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.core.content.IntentCompat
 import androidx.core.content.FileProvider
 import androidx.core.graphics.drawable.IconCompat
 import cn.ac.lz233.tarnhelm.App
@@ -62,7 +63,7 @@ class BackupBottomSheetFragment : BottomSheetDialogFragment(), CoroutineScope by
     private val shareChooserReceiver: BroadcastReceiver by lazy {
         object : BroadcastReceiver() {
             override fun onReceive(context: Context, intent: Intent) {
-                val clickedComponent = intent.getParcelableExtra<ComponentName>(Intent.EXTRA_CHOSEN_COMPONENT)
+                val clickedComponent = IntentCompat.getParcelableExtra(intent, Intent.EXTRA_CHOSEN_COMPONENT, ComponentName::class.java)
                 LogUtil._d(clickedComponent)
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE && clickedComponent == null) {
                     return

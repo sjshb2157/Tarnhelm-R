@@ -26,12 +26,24 @@ object ModuleBridgeHelper {
         }
 
         override fun onServiceDisconnected(name: ComponentName) {
-            bridge = null
-            isBridgeAvailable = false
-            unbindBridgeService(mContext)
-            if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.BAKLAVA) Android.startModuleAppProcess()
-            bindBridgeService()
+            rebind()
         }
+
+        override fun onBindingDied(name: ComponentName) {
+            rebind()
+        }
+
+        override fun onNullBinding(name: ComponentName) {
+            LogUtil.xpe("bridge service returned a null binder")
+        }
+    }
+
+    private fun rebind() {
+        bridge = null
+        isBridgeAvailable = false
+        unbindBridgeService(mContext)
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.BAKLAVA) Android.startModuleAppProcess()
+        bindBridgeService()
     }
 
     fun isBridgeActive(): Boolean {
@@ -48,7 +60,6 @@ object ModuleBridgeHelper {
     private fun bridgeIntent() = Intent().apply {
         component = ComponentName(Config.packageName, Config.bridgeServiceName)
         action = Config.bridgeAction
-        addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES)
     }
 
     @SuppressLint("MissingPermission")
